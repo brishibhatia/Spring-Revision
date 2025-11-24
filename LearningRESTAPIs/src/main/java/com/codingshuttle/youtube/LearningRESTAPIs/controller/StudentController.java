@@ -1,27 +1,38 @@
 package com.codingshuttle.youtube.LearningRESTAPIs.controller;
 
+import com.codingshuttle.youtube.LearningRESTAPIs.dto.AddStudentRequestDto;
 import com.codingshuttle.youtube.LearningRESTAPIs.dto.StudentDto;
-import com.codingshuttle.youtube.LearningRESTAPIs.entity.Student;
-import com.codingshuttle.youtube.LearningRESTAPIs.repository.StudentRepository;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RestController;
+import com.codingshuttle.youtube.LearningRESTAPIs.service.StudentService;
+import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
+@RequestMapping("/students")
+//@RequiredArgsConstructor
 public class StudentController {
-    private final StudentRepository studentRepository;
+    private final StudentService studentService;
 
-    public StudentController(StudentRepository studentRepository) {
-        this.studentRepository = studentRepository;
+    public StudentController(StudentService studentService) {
+        this.studentService = studentService;
     }
 
-    @GetMapping("/student")
-    public List<Student> getStudent(){
-        return studentRepository.findAll();
+
+    @GetMapping
+    public ResponseEntity<List<StudentDto>> getAllStudents(){
+        return ResponseEntity.ok(studentService.getAllStudents());
+
     }
-    @GetMapping("/student/{id}")
-    public StudentDto getStudentbyid(){
-    return new StudentDto(33L , "Bhatia", "g@gmail.com");
+    @GetMapping("/students/{id}")
+    public ResponseEntity<StudentDto> getStudentbyid(@PathVariable Long id ){
+    return ResponseEntity.ok(studentService.getStudentById(id));
     }
+    @PostMapping
+    public ResponseEntity<StudentDto> createNewStudent(@RequestBody AddStudentRequestDto addStudentRequestDto){
+        return ResponseEntity.status(HttpStatus.CREATED).body(studentService.createNewStudent(addStudentRequestDto));
+    }
+
 }

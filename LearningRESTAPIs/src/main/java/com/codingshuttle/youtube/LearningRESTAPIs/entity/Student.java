@@ -17,4 +17,27 @@ public class Student {
 private String name;
 private String email;
 
+    public void setId(Long id) {
+        Id = id;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public Long getId() {
+        return Id;
+    }
+
+    public String getEmail() {
+        return email;
+    }
 }
