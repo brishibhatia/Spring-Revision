@@ -5,6 +5,7 @@ import com.codingshuttle.youtube.LearningRESTAPIs.dto.StudentDto;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Map;
 
 @Service
 public interface StudentService   {
@@ -16,4 +17,6 @@ public interface StudentService   {
     void deleteStudentById(Long id);
 
     StudentDto updateStudent(Long id, AddStudentRequestDto addStudentRequestDto);
+
+    StudentDto updatePartialStudent(Long id, Map<String, Object> updates);
 }
