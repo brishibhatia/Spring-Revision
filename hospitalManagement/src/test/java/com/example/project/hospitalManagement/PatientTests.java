@@ -1,6 +1,6 @@
 package com.example.project.hospitalManagement;
 
-import com.example.project.hospitalManagement.Entity.Patient;
+import com.example.project.hospitalManagement.entity.Patient;
 import com.example.project.hospitalManagement.repository.PatientRepository;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
