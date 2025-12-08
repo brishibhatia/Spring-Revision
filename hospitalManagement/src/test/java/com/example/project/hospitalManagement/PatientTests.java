@@ -18,4 +18,5 @@ public class PatientTests {
         List<Patient> PatientList =  patientRepository.findAll();
         System.out.println(PatientList);
     }
+//    great
 }
