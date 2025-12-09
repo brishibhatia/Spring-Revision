@@ -17,6 +17,9 @@ public class PatientTests {
     public void testPatientRepository(){
         List<Patient> PatientList =  patientRepository.findAll();
         System.out.println(PatientList);
+
+        Patient p1 = new Patient();
+        patientRepository.save(p1);
     }
 //    great
 }
