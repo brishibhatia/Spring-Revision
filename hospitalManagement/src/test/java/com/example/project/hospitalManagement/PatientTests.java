@@ -27,7 +27,7 @@ public class PatientTests {
     }
     @Test
     public void testTransactionMethods(){
-       Patient patient = patientService.getPatientById(22L);
+       Patient patient = patientService.getPatientById(1L);
        System.out.println(patient);
     }
 //    great
