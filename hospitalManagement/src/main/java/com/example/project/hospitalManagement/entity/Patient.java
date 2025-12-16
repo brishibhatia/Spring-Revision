@@ -14,17 +14,14 @@ import java.time.LocalDateTime;
 @Getter
 @Setter
 @Table(
-        name ="patient_tbl",
+        name ="patient",
         uniqueConstraints = {
-                @UniqueConstraint(columnNames = {"email"} , name = "unique_patient_email"),
+//                @UniqueConstraint(columnNames = {"email"} , name = "unique_patient_email"),
                 @UniqueConstraint(columnNames = {"birthDate", "name"} , name = "unique_patient_name_birthDate")
         },
         indexes = {
                 @Index(columnList = "birthDate" , name = "idx_patient_birthdate")
         }
-
-
-
 
 )
 public class Patient {
@@ -33,14 +30,15 @@ public class Patient {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "patient_name" , nullable = false)
+    @Column( nullable = false , length = 40)
     private String name;
     @ToString.Exclude
-    private LocalDate birthDate;
+    private LocalDate birthdate;
 
-    @Column(unique = true)
+    @Column(unique = true , nullable = false)
     private String email;
     private String gender;
+    private String blood_group;
     @CreationTimestamp
     @Column(updatable = false)
     private LocalDateTime createdAt;
