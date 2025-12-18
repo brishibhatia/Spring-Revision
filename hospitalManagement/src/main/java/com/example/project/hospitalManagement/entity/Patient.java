@@ -38,10 +38,11 @@ public class Patient {
     @Column(unique = true , nullable = false)
     private String email;
     private String gender;
-    private String blood_group;
+
     @CreationTimestamp
     @Column(updatable = false)
     private LocalDateTime createdAt;
+    private String blood_group;
 
 
 }
